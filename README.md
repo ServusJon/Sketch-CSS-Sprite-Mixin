@@ -103,7 +103,7 @@ $spritemapWidth: 77px;
 
 	@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 		.cssRetinaSprite( $play-icon-2x );
-  }
+	}
 }
 ```
 
