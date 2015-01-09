@@ -5,7 +5,7 @@ Generate a code of mixin for scss, less and stylus in Sketch 3. Code is copied t
 
 Sprites name are group layer name of top-level, and the Sprite image name is an Artboard name.
 
-![Screen Shot](http://creative-tweet.net/img/github/css-sprite-generator-ss.png)
+![Screen Shot](http://s27.postimg.org/fftp0kohb/Artboard_1_2x.png)
 
 **SCSS**
 
@@ -17,12 +17,22 @@ Sprites name are group layer name of top-level, and the Sprite image name is an 
 	background-image: url( #{ nth( $spriteVals, 3 ) } );
 	background-position: nth( $spriteVals, 4 ) nth( $spriteVals, 5 );
 }
-$twitter-gray: 64px 64px '../img/sprite.png' -110px 0px;
-$facebook-gray: 64px 64px '../img/sprite.png' -110px -233px;
-$googlep-gray: 64px 64px '../img/sprite.png' -132px -133px;
-$twitter: 64px 64px '../img/sprite.png' -24px -26px;
-$facebook: 64px 64px '../img/sprite.png' -16px -258px;
-$googlep: 64px 64px '../img/sprite.png' 0px -133px;
+
+@mixin cssRetinaSprite( $spriteVals ) {
+	width: nth( $spriteVals, 1 );
+	height: nth( $spriteVals, 2 );
+	background-repeat: no-repeat;
+	background-image: url( #{ nth( $spriteVals, 3 ) } );
+	background-position: nth( $spriteVals, 4 ) nth( $spriteVals, 5 );
+	background-size: 77px auto;
+}
+
+$play-icon: 22px 20px '../img/Artboard 1.png' -47px -10px;
+$world-icon: 22px 22px '../img/Artboard 1.png' -7px -9px;
+
+$play-icon-2x: 22px 20px '../img/Artboard 1@2x.png' -47px -10px;
+$world-icon-2x: 22px 22px '../img/Artboard 1@2x.png' -7px -9px;
+$spritemapWidth: 77px;
 ```
 
 **LESS**
@@ -35,12 +45,22 @@ $googlep: 64px 64px '../img/sprite.png' 0px -133px;
 	background-image: e(%('url(%s)', extract( @spriteVals, 3 ) ) );
 	background-position: extract( @spriteVals, 4 ) extract( @spriteVals, 5 );
 }
-@twitter-gray: 64px 64px '../img/sprite.png' -110px 0px;
-@facebook-gray: 64px 64px '../img/sprite.png' -110px -233px;
-@googlep-gray: 64px 64px '../img/sprite.png' -132px -133px;
-@twitter: 64px 64px '../img/sprite.png' -24px -26px;
-@facebook: 64px 64px '../img/sprite.png' -16px -258px;
-@googlep: 64px 64px '../img/sprite.png' 0px -133px;
+
+.cssRetinaSprite( @spriteVals ) {
+	width: extract( @spriteVals, 1 );
+	height: extract( @spriteVals, 2 );
+	background-repeat: no-repeat;
+	background-image: e(%('url(%s)', extract( @spriteVals, 3 ) ) );
+	background-position: extract( @spriteVals, 4 ) extract( @spriteVals, 5 );
+	background-size: 77px auto;
+}
+
+@play-icon: 22px 20px '../img/Artboard 1.png' -47px -10px;
+@world-icon: 22px 22px '../img/Artboard 1.png' -7px -9px;
+
+@play-icon-2x: 22px 20px '../img/Artboard 1@2x.png' -47px -10px;
+@world-icon-2x: 22px 22px '../img/Artboard 1@2x.png' -7px -9px;
+@spritemapWidth: 77px;
 ```
 
 **Stylus**
@@ -53,19 +73,29 @@ cssSprite( $spriteVals )
 	background-image: url( $spriteVals[2] );
 	background-position: $spriteVals[3] $spriteVals[4];
 
-$twitter-gray = 64px 64px '../img/sprite.png' -110px 0px;
-$facebook-gray = 64px 64px '../img/sprite.png' -110px -233px;
-$googlep-gray = 64px 64px '../img/sprite.png' -132px -133px;
-$twitter = 64px 64px '../img/sprite.png' -24px -26px;
-$facebook = 64px 64px '../img/sprite.png' -16px -258px;
-$googlep = 64px 64px '../img/sprite.png' 0px -133px;
+
+cssRetinaSprite( $spriteVals )
+	width: $spriteVals[1];
+	height: $spriteVals[2];
+	background-repeat: no-repeat;
+	background-image: url( $spriteVals[3] );
+	background-position: $spriteVals[4] $spriteVals[5];
+	background-size: 77px auto;
+
+
+$play-icon = 22px 20px '../img/Artboard 1.png' -47px -10px;
+$world-icon = 22px 22px '../img/Artboard 1.png' -7px -9px;
+
+$play-icon-2x = 22px 20px '../img/Artboard 1@2x.png' -47px -10px;
+$world-icon-2x = 22px 22px '../img/Artboard 1@2x.png' -7px -9px;
+$spritemapWidth: 77px;
 ```
 
 ## License
 
 The MIT License (MIT)
 
-(c) 2014 
+(c) 2014
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
