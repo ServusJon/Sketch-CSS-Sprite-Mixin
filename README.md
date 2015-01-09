@@ -1,4 +1,4 @@
-Sketch CSS Sprite Mixin (retina ready)
+Sketch CSS Spriting Mixin (retina ready)
 ======================================
 
 ## CSS Spriting super easy!
