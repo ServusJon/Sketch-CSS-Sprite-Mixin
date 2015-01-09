@@ -29,11 +29,11 @@ Copy this code on top in your CSS:
 	background-size: 77px auto;
 }
 
-$play-icon: 22px 20px '../img/Artboard 1.png' -47px -10px;
-$world-icon: 22px 22px '../img/Artboard 1.png' -7px -9px;
+$play-icon: 22px 20px '../img/sprite.png' -47px -10px;
+$world-icon: 22px 22px '../img/sprite.png' -7px -9px;
 
-$play-icon-2x: 22px 20px '../img/Artboard 1@2x.png' -47px -10px;
-$world-icon-2x: 22px 22px '../img/Artboard 1@2x.png' -7px -9px;
+$play-icon-2x: 22px 20px '../img/sprite@2x.png' -47px -10px;
+$world-icon-2x: 22px 22px '../img/sprite@2x.png' -7px -9px;
 $spritemapWidth: 77px;
 ```
 
@@ -57,11 +57,11 @@ $spritemapWidth: 77px;
 	background-size: 77px auto;
 }
 
-@play-icon: 22px 20px '../img/Artboard 1.png' -47px -10px;
-@world-icon: 22px 22px '../img/Artboard 1.png' -7px -9px;
+@play-icon: 22px 20px '../img/sprite.png' -47px -10px;
+@world-icon: 22px 22px '../img/sprite.png' -7px -9px;
 
-@play-icon-2x: 22px 20px '../img/Artboard 1@2x.png' -47px -10px;
-@world-icon-2x: 22px 22px '../img/Artboard 1@2x.png' -7px -9px;
+@play-icon-2x: 22px 20px '../img/sprite@2x.png' -47px -10px;
+@world-icon-2x: 22px 22px '../img/sprite@2x.png' -7px -9px;
 @spritemapWidth: 77px;
 ```
 
@@ -85,11 +85,11 @@ cssRetinaSprite( $spriteVals )
 	background-size: 77px auto;
 
 
-$play-icon = 22px 20px '../img/Artboard 1.png' -47px -10px;
-$world-icon = 22px 22px '../img/Artboard 1.png' -7px -9px;
+$play-icon = 22px 20px '../img/sprite.png' -47px -10px;
+$world-icon = 22px 22px '../img/sprite.png' -7px -9px;
 
-$play-icon-2x = 22px 20px '../img/Artboard 1@2x.png' -47px -10px;
-$world-icon-2x = 22px 22px '../img/Artboard 1@2x.png' -7px -9px;
+$play-icon-2x = 22px 20px '../img/sprite@2x.png' -47px -10px;
+$world-icon-2x = 22px 22px '../img/sprite@2x.png' -7px -9px;
 $spritemapWidth: 77px;
 ```
 
