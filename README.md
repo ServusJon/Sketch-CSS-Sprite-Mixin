@@ -1,7 +1,7 @@
 Sketch CSS Sprite Mixin (retina ready)
 ======================================
 
-## CSS Spriting super easy with this Sketch Plugin.
+## CSS Spriting super easy!
 ### Supporting SCSS / LESS / STYLUS
 
 
