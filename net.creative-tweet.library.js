@@ -186,5 +186,7 @@ cssSpriteGenerator.getSpriteValue = function( _type ) {
 
 	retinaSize = prefix + 'spritemapWidth: ' + artboardWidth + 'px;';
 
-	return spriteVariable + '\n'+ retinaSpriteVariable + retinaSize;
+
+	return spriteVariable + '\n'+ retinaSpriteVariable;
+	// return spriteVariable + '\n'+ retinaSpriteVariable + retinaSize;
 }
