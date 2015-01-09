@@ -51,10 +51,10 @@ $spritemapWidth: 77px;
 .logo {
 	…
 
-	.cssSprite( $play-icon );
+	@include cssSprite($play-icon);
 
 	@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-		.cssRetinaSprite( $play-icon-2x );
+		@include cssRetinaSprite($play-icon-2x);
 	}
 }
 ```
