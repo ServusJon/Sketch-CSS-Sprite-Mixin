@@ -95,16 +95,17 @@ $spritemapWidth: 77px;
 
 **After that add Icons to a class:**
 
-	.logo {
-		…
+```
+.logo {
+	…
 
-		.cssSprite( $play-icon );
+	.cssSprite( $play-icon );
 
-    @media @retina {
-      .cssRetinaSprite( $play-icon-2x );
-    }
-	}
-
+	@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .cssRetinaSprite( $play-icon-2x );
+  }
+}
+```
 
 
 ## License
