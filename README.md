@@ -7,6 +7,8 @@ Sprites name are group layer name of top-level, and the Sprite image name is an 
 
 ![Screen Shot](http://s4.postimg.org/gsit6dnod/Bildschirmfoto_2015_01_09_um_15_21_07.png)
 
+Copy this code on top in your CSS:
+
 **SCSS**
 
 ```scss
@@ -90,6 +92,20 @@ $play-icon-2x = 22px 20px '../img/Artboard 1@2x.png' -47px -10px;
 $world-icon-2x = 22px 22px '../img/Artboard 1@2x.png' -7px -9px;
 $spritemapWidth: 77px;
 ```
+
+**After that add Icons to a class:**
+
+	.logo {
+		…
+
+		.cssSprite( $play-icon );
+
+    @media @retina {
+      .cssRetinaSprite( $play-icon-2x );
+    }
+	}
+
+
 
 ## License
 
