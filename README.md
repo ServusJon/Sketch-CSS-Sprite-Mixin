@@ -5,7 +5,7 @@ Generate a code of mixin for scss, less and stylus in Sketch 3. Code is copied t
 
 Sprites name are group layer name of top-level, and the Sprite image name is an Artboard name.
 
-![Screen Shot](http://s27.postimg.org/fftp0kohb/Artboard_1_2x.png)
+![Screen Shot](http://s4.postimg.org/gsit6dnod/Bildschirmfoto_2015_01_09_um_15_21_07.png)
 
 **SCSS**
 
