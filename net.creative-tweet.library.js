@@ -1,6 +1,9 @@
 // Shortcut to CSS Sprite Generator (shift cmd g)
 var cssSpriteGenerator = cssSpriteGenerator || {};
 var artboard = [[doc currentPage] currentArtboard];
+var artboardWidth = [[artboard frame] width]];
+
+
 if ( !artboard ) {
 	artboard = [[[doc currentPage] artboards] objectAtIndex:0];
 }
@@ -14,11 +17,13 @@ cssSpriteGenerator.getMixinSet = function( _type ) {
 
 cssSpriteGenerator.getMixin = function( _type ) {
 	var mixinName = 'cssSprite';
+	var mixinRetinaName = 'cssRetinaSprite';
 
 	switch ( _type ) {
 		case 'scss':
 			var varName = '$spriteVals',
 				mixinStart = '@mixin ' + mixinName + '( ' + varName + ' ) {\n',
+				mixinRetinaStart = '@mixin ' + mixinRetinaName + '( ' + varName + ' ) {\n',
 				mixinEnd   = '}\n',
 				wrapStart = ' nth( ',
 				listIdx   = ', ',
@@ -30,6 +35,7 @@ cssSpriteGenerator.getMixin = function( _type ) {
 		case 'less':
 			var varName = '@spriteVals',
 				mixinStart = '.' + mixinName + '( ' + varName + ' ) {\n',
+				mixinRetinaStart = '.' + mixinRetinaName + '( ' + varName + ' ) {\n',
 				mixinEnd   = '}\n',
 				wrapStart = ' extract( ',
 				listIdx   = ', ',
@@ -41,6 +47,7 @@ cssSpriteGenerator.getMixin = function( _type ) {
 		case 'stylus':
 			var varName = '$spriteVals',
 				mixinStart = mixinName + '( ' + varName + ' )\n',
+				mixinRetinaStart = mixinRetinaName + '( ' + varName + ' )\n',
 				mixinEnd   = '\n',
 				wrapStart = ' ',
 				listIdx   = '[',
@@ -52,6 +59,7 @@ cssSpriteGenerator.getMixin = function( _type ) {
 		default:
 			var varName = '$spriteVals',
 				mixinStart = '@mixin ' + mixinName + '( ' + varName + ' ) {\n',
+				mixinRetinaStart = '@mixin ' + mixinRetinaName + '( ' + varName + ' ) {\n',
 				mixinEnd   = '}\n',
 				wrapStart = ' nth( ',
 				listIdx   = ', ',
@@ -66,14 +74,29 @@ cssSpriteGenerator.getMixin = function( _type ) {
 			   + '\twidth:' + wrapStart + varName + listIdx + ( i++ ) + wrapEnd + ';\n'
 			   + '\theight:' + wrapStart + varName + listIdx + ( i++ ) + wrapEnd + ';\n'
 			   + '\tbackground-repeat: no-repeat;\n'
-			   + '\tbackground-image:' + bgImageStart 
-			   						   + wrapStart + varName + listIdx + ( i++ ) + wrapEnd 
+			   + '\tbackground-image:' + bgImageStart
+			   						   + wrapStart + varName + listIdx + ( i++ ) + wrapEnd
 			   						   + bgImageEnd
 			   + '\tbackground-position:' + wrapStart + varName + listIdx + ( i++ ) + wrapEnd
 										  + wrapStart + varName + listIdx + i + wrapEnd + ';\n'
 			   + mixinEnd;
 
-	return mixin;
+	// Reset i counter
+	i = 1;
+
+	var retinaMixin  = mixinRetinaStart
+			   + '\twidth:' + wrapStart + varName + listIdx + ( i++ ) + wrapEnd + ';\n'
+			   + '\theight:' + wrapStart + varName + listIdx + ( i++ ) + wrapEnd + ';\n'
+			   + '\tbackground-repeat: no-repeat;\n'
+			   + '\tbackground-image:' + bgImageStart
+			   						   + wrapStart + varName + listIdx + ( i++ ) + wrapEnd
+			   						   + bgImageEnd
+			   + '\tbackground-position:' + wrapStart + varName + listIdx + ( i++ ) + wrapEnd
+										  + wrapStart + varName + listIdx + i + wrapEnd + ';\n'
+				   + '\tbackground-size: ' + artboardWidth + 'px auto' + ';\n'
+			   + mixinEnd;
+
+	return mixin + '\n'+ retinaMixin + '\n';
 }
 
 cssSpriteGenerator.getExportDir = function() {
@@ -137,13 +160,31 @@ cssSpriteGenerator.getSpriteValue = function( _type ) {
 	for (var i = [layers count] - 1; i >= 0; i--) {
 		var layer = [layers objectAtIndex:i];
 			spriteVariable += prefix + [layer name] + sepalator
-						    + ' ' + [[layer frame] width] + 'px' 
+						    + ' ' + [[layer frame] width] + 'px'
 						    + ' ' + [[layer frame] height] + 'px'
 						    + ' \'' + imagePath + '\''
-						    + ' ' + ( 0 - [[layer frame] x] ) + 'px' 
-						    + ' ' + ( 0 - [[layer frame] y] ) + 'px' 
+						    + ' ' + ( 0 - [[layer frame] x] ) + 'px'
+						    + ' ' + ( 0 - [[layer frame] y] ) + 'px'
 						    + ';\n';
 	};
 
-	return spriteVariable;
+	// retina layers
+	var retinaLayers = [artboard layers],
+		retinaSpriteVariable = '',
+		imagePath = '../img/' + [artboard name] + '@2x.png';
+
+	for (var i = [retinaLayers count] - 1; i >= 0; i--) {
+		var layer = [retinaLayers objectAtIndex:i];
+			retinaSpriteVariable += prefix + [layer name] + '-2x' + sepalator
+						    + ' ' + [[layer frame] width] + 'px'
+						    + ' ' + [[layer frame] height] + 'px'
+						    + ' \'' + imagePath + '\''
+						    + ' ' + ( 0 - [[layer frame] x] ) + 'px'
+						    + ' ' + ( 0 - [[layer frame] y] ) + 'px'
+						    + ';\n';
+	};
+
+	retinaSize = prefix + 'spritemapWidth: ' + artboardWidth + 'px;';
+
+	return spriteVariable + '\n'+ retinaSpriteVariable + retinaSize;
 }
