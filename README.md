@@ -1,9 +1,17 @@
 Sketch CSS Sprite Mixin (retina ready)
 ======================================
 
-Generate a code of mixin for scss, less and stylus in Sketch 3. Code is copied to the clipboard when run the plugin.
+## CSS Spriting super easy with this Sketch Plugin.
+### Supporting SCSS / LESS / STYLUS
 
-Sprites name are group layer name of top-level, and the Sprite image name is an Artboard name.
+
+1. Place all the Icons on an Artboard
+2. Give them a name (no white-space), name the artboard (Export Setting )
+3. Export the artboard in 1x and 2x in your "img/"-Folder
+4. Fire the Plugin "Sketch CSS Sprite Mixin"
+5. Paste the code in your project
+6. Include the Mixins in your classes
+
 
 ![Screen Shot](http://s4.postimg.org/gsit6dnod/Bildschirmfoto_2015_01_09_um_15_21_07.png)
 
@@ -37,63 +45,7 @@ $world-icon-2x: 22px 22px '../img/sprite@2x.png' -7px -9px;
 $spritemapWidth: 77px;
 ```
 
-**LESS**
-
-```less
-.cssSprite( @spriteVals ) {
-	width: extract( @spriteVals, 1 );
-	height: extract( @spriteVals, 2 );
-	background-repeat: no-repeat;
-	background-image: e(%('url(%s)', extract( @spriteVals, 3 ) ) );
-	background-position: extract( @spriteVals, 4 ) extract( @spriteVals, 5 );
-}
-
-.cssRetinaSprite( @spriteVals ) {
-	width: extract( @spriteVals, 1 );
-	height: extract( @spriteVals, 2 );
-	background-repeat: no-repeat;
-	background-image: e(%('url(%s)', extract( @spriteVals, 3 ) ) );
-	background-position: extract( @spriteVals, 4 ) extract( @spriteVals, 5 );
-	background-size: 77px auto;
-}
-
-@play-icon: 22px 20px '../img/sprite.png' -47px -10px;
-@world-icon: 22px 22px '../img/sprite.png' -7px -9px;
-
-@play-icon-2x: 22px 20px '../img/sprite@2x.png' -47px -10px;
-@world-icon-2x: 22px 22px '../img/sprite@2x.png' -7px -9px;
-@spritemapWidth: 77px;
-```
-
-**Stylus**
-
-```stylus
-cssSprite( $spriteVals )
-	width: $spriteVals[0];
-	height: $spriteVals[1];
-	background-repeat: no-repeat;
-	background-image: url( $spriteVals[2] );
-	background-position: $spriteVals[3] $spriteVals[4];
-
-
-cssRetinaSprite( $spriteVals )
-	width: $spriteVals[1];
-	height: $spriteVals[2];
-	background-repeat: no-repeat;
-	background-image: url( $spriteVals[3] );
-	background-position: $spriteVals[4] $spriteVals[5];
-	background-size: 77px auto;
-
-
-$play-icon = 22px 20px '../img/sprite.png' -47px -10px;
-$world-icon = 22px 22px '../img/sprite.png' -7px -9px;
-
-$play-icon-2x = 22px 20px '../img/sprite@2x.png' -47px -10px;
-$world-icon-2x = 22px 22px '../img/sprite@2x.png' -7px -9px;
-$spritemapWidth: 77px;
-```
-
-##After that add Icons to a class:
+## After that add Icons to a class:
 
 ```
 .logo {
