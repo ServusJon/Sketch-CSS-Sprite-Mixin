@@ -1,5 +1,5 @@
-Sketch CSS Sprite Mixin
-=======================
+Sketch CSS Sprite Mixin (retina ready)
+======================================
 
 Generate a code of mixin for scss, less and stylus in Sketch 3. Code is copied to the clipboard when run the plugin.
 
