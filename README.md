@@ -93,7 +93,7 @@ $world-icon-2x = 22px 22px '../img/Artboard 1@2x.png' -7px -9px;
 $spritemapWidth: 77px;
 ```
 
-**After that add Icons to a class:**
+##After that add Icons to a class:
 
 ```
 .logo {
@@ -102,7 +102,7 @@ $spritemapWidth: 77px;
 	.cssSprite( $play-icon );
 
 	@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    .cssRetinaSprite( $play-icon-2x );
+		.cssRetinaSprite( $play-icon-2x );
   }
 }
 ```
